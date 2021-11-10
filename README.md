@@ -1,5 +1,12 @@
 # 🔥 Anet-A8-Plus-SKR-1.4-TURBO 🔥
 
+## 📋Description:
+<p>
+  This is my version of Marlin Firmware version 2.0.x , for my Anet a8 plus . 
+  The printer has a BTT SKR 1.4 Turbo from BTT with the TMC2209 without sensorless homing , so i have to modify the stepper driver cutting 1 pin off.
+  For the display i used a BTT TFT V1.1 . 
+</p>
+
 ## 📌Features for now:
 <p> 
 ◽ Mesh Bed Leveling ❌ <br>
