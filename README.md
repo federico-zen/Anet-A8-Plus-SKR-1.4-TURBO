@@ -9,8 +9,8 @@
 
 ## 📌Features for now:
 <p> 
-◽ Mesh Bed Leveling ❌ <br>
 ◽ Auto Bed Leveling ❌  <br>
+◽ Z Auto Leveling ❌ <br>
 ◽ Custom Boot Screen ✔️ <br>
 ◽ Filament Change ✔️ <br>
 ◽ Linear Advance ❌ <br>
