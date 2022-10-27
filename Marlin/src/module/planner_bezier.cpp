@@ -121,9 +121,12 @@ void cubic_b_spline(
 
   millis_t next_idle_ms = millis() + 200UL;
 
+  // Hints to help optimize the move
+  PlannerHints hints;
+
   for (float t = 0; t < 1;) {
 
-    thermalManager.manage_heater();
+    thermalManager.task();
     millis_t now = millis();
     if (ELAPSED(now, next_idle_ms)) {
       next_idle_ms = now + 200UL;
@@ -177,15 +180,22 @@ void cubic_b_spline(
       }
     */
 
-    step = new_t - t;
+    hints.millimeters = new_t - t;
     t = new_t;
 
     // Compute and send new position
-    xyze_pos_t new_bez = {
-      new_pos0, new_pos1,
-      interp(position.z, target.z, t),   // FIXME. These two are wrong, since the parameter t is
-      interp(position.e, target.e, t)    // not linear in the distance.
-    };
+    xyze_pos_t new_bez = LOGICAL_AXIS_ARRAY(
+      interp(position.e, target.e, t),  // FIXME. Wrong, since t is not linear in the distance.
+      new_pos0,
+      new_pos1,
+      interp(position.z, target.z, t),  // FIXME. Wrong, since t is not linear in the distance.
+      interp(position.i, target.i, t),  // FIXME. Wrong, since t is not linear in the distance.
+      interp(position.j, target.j, t),  // FIXME. Wrong, since t is not linear in the distance.
+      interp(position.k, target.k, t),  // FIXME. Wrong, since t is not linear in the distance.
+      interp(position.u, target.u, t),  // FIXME. Wrong, since t is not linear in the distance.
+      interp(position.v, target.v, t),  // FIXME. Wrong, since t is not linear in the distance.
+      interp(position.w, target.w, t)   // FIXME. Wrong, since t is not linear in the distance.
+    );
     apply_motion_limits(new_bez);
     bez_target = new_bez;
 
@@ -196,7 +206,7 @@ void cubic_b_spline(
       const xyze_pos_t &pos = bez_target;
     #endif
 
-    if (!planner.buffer_line(pos, scaled_fr_mm_s, active_extruder, step))
+    if (!planner.buffer_line(pos, scaled_fr_mm_s, active_extruder, hints))
       break;
   }
 }

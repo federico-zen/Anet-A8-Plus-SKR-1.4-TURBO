@@ -42,6 +42,7 @@ extern const uint8_t fan_fast0_64x64x4[], fan_fast1_64x64x4[];
 extern const uint8_t sd_64x64x4[];
 extern const uint8_t home_64x64x4[];
 extern const uint8_t btn_rounded_64x52x4[];
+extern const uint8_t btn_rounded_42x39x4[];
 extern const uint8_t menu_64x64x4[];
 extern const uint8_t settings_64x64x4[];
 extern const uint8_t confirm_64x64x4[];
@@ -95,6 +96,7 @@ enum MarlinImage : uint8_t {
   imgSlider,
   imgHome,
   imgBtn52Rounded,
+  imgBtn39Rounded,
   imgCount,
   noImage = imgCount,
   imgPageUp = imgLeft,
@@ -112,7 +114,13 @@ enum colorMode_t : uint8_t {
 
 typedef colorMode_t ColorMode;
 
-typedef struct __attribute__((__packed__)) {
+#ifdef __AVR__
+  #define IMG_PACKED __attribute__((__packed__))
+#else
+  #define IMG_PACKED
+#endif
+
+typedef struct IMG_PACKED {
   void *data;
   uint16_t width;
   uint16_t height;
@@ -145,6 +153,7 @@ extern const tImage Fan_Fast1_64x64x4;
 extern const tImage SD_64x64x4;
 extern const tImage Home_64x64x4;
 extern const tImage BtnRounded_64x52x4;
+extern const tImage BtnRounded_42x39x4;
 extern const tImage Menu_64x64x4;
 extern const tImage Settings_64x64x4;
 extern const tImage Confirm_64x64x4;
