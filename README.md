@@ -2,18 +2,18 @@
 
 ## 📋Description:
 <p>
-  This is my version of Marlin Firmware version 2.0.x , for my Anet a8 plus . 
+  This is my version of Marlin Firmware version 2.1.1 , for my Anet a8 plus . 
   The printer has a BTT SKR 1.4 Turbo from BTT with the TMC2209 without sensorless homing , so i have to modify the stepper driver cutting 1 pin off.
   For the display i used a BTT TFT V1.1 . 
 </p>
 
 ## 📌Features for now:
 <p> 
-◽ Auto Bed Leveling ❌  <br>
-◽ Z Auto Leveling ❌ <br>
+◽ Auto Bed Leveling ✔️  <br>
+◽ Z Auto Leveling ✔️ <br>
 ◽ Custom Boot Screen ✔️ <br>
 ◽ Filament Change ✔️ <br>
-◽ Linear Advance ❌ <br>
+◽ Linear Advance ✔️ <br>
 </p>
 
 ## 💪Any Help or Changes are Welcome
